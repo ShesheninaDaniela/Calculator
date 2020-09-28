@@ -19,7 +19,14 @@ pipeline {
 
             }
         }
+       stage("clean container and image") {
+            steps {
 
+               sh 'docker rm -f calculator_container'
+               sh 'docker rmi -f calculator'
+
+            }
+        }
         stage("build docker image and run docker container") {
             steps {
 
